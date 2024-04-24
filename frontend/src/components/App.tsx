@@ -30,6 +30,7 @@ import { UserPreferencesButton } from './misc/UserPreferences';
 import { featureErrors } from '../state/supportedFeatures';
 import { renderErrorModals } from './misc/ErrorModal';
 import { SyncIcon, ChevronRightIcon } from '@primer/octicons-react';
+import PrivateRoute from './PrivateRoute';
 
 const { Content, Footer, Sider } = Layout;
 
@@ -324,10 +325,12 @@ export default class App extends Component {
 
                     {/* Default View */}
                     <Route path="*">
-                        <Layout style={{ height: '100vh', background: 'transparent', overflow: 'hidden' }}>
-                            <AppSide />
-                            <AppContent />
-                        </Layout>
+                        <PrivateRoute>
+                            <Layout style={{ height: '100vh', background: 'transparent', overflow: 'hidden' }}>
+                                <AppSide />
+                                <AppContent />
+                            </Layout>
+                        </PrivateRoute>
                     </Route>
                 </Switch>
                 <FeatureErrorCheck />
